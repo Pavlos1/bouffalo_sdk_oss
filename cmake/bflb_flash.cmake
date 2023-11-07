@@ -1,12 +1,12 @@
-if(MINGW OR CYGWIN OR WIN32)
-set(TOOL_SUFFIX ".exe")
-elseif(UNIX)
-set(TOOL_SUFFIX "-ubuntu")
-elseif(APPLE)
-set(TOOL_SUFFIX "-macos")
-endif()
+#if(MINGW OR CYGWIN OR WIN32)
+#set(TOOL_SUFFIX ".exe")
+#elseif(UNIX)
+#set(TOOL_SUFFIX "-ubuntu")
+#elseif(APPLE)
+#set(TOOL_SUFFIX "-macos")
+#endif()
 
-set(BL_FW_POST_PROC ${BL_SDK_BASE}/tools/bflb_tools/bflb_fw_post_proc/bflb_fw_post_proc${TOOL_SUFFIX})
+set(BL_FW_POST_PROC python ${BL_SDK_BASE}/tools/bflb_tools_imported/libs/bflb_fw_post_proc.py)
 
 set(BL_FW_POST_PROC_CONFIG --chipname=${CHIP} --imgfile=${BIN_FILE})
 

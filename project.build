@@ -3,13 +3,13 @@ ifndef VERBOSE
 MAKEFLAGS += --no-print-directory
 endif
 
-command_flash = $(BL_FLASH_PROGRAM) --interface=uart --baudrate=$(BAUDRATE) \
-	--port=$(COMX) --chipname=$(CHIP) --cpu_id=$(CPU_ID) --config=flash_prog_cfg.ini
-command_efuse = $(BL_FLASH_PROGRAM) --interface=uart --baudrate=$(BAUDRATE) \
-	--port=$(COMX) --chipname=$(CHIP) --efuse=build/build_out/efusedata.bin
-command_puncover = $(PUNCOVER_PROGRAM) \
-	--elf_file ./build/build_out/*.elf --map_file ./build/build_out/*.map \
-	--build_dir ./build --src_root ${BL_SDK_BASE} --port 5001
+#command_flash = $(BL_FLASH_PROGRAM) --interface=uart --baudrate=$(BAUDRATE) \
+#	--port=$(COMX) --chipname=$(CHIP) --cpu_id=$(CPU_ID) --config=flash_prog_cfg.ini
+#command_efuse = $(BL_FLASH_PROGRAM) --interface=uart --baudrate=$(BAUDRATE) \
+#	--port=$(COMX) --chipname=$(CHIP) --efuse=build/build_out/efusedata.bin
+#command_puncover = $(PUNCOVER_PROGRAM) \
+#	--elf_file ./build/build_out/*.elf --map_file ./build/build_out/*.map \
+#	--build_dir ./build --src_root ${BL_SDK_BASE} --port 5001
 
 ifeq ($(OS),Windows_NT)
 CMAKE = $(BL_SDK_BASE)/tools/cmake/bin/cmake.exe
@@ -36,9 +36,9 @@ else
 	PUNCOVER_PROGRAM = puncover_riscv
 	cmake_generator = "Unix Makefiles"
 	else
-	CMAKE = $(BL_SDK_BASE)/tools/cmake/bin/cmake
-	BL_FLASH_PROGRAM = ${BL_SDK_BASE}/tools/bflb_tools/bouffalo_flash_cube/BLFlashCommand-ubuntu
-	PUNCOVER_PROGRAM = puncover_riscv
+	CMAKE = cmake
+	#BL_FLASH_PROGRAM = ${BL_SDK_BASE}/tools/bflb_tools/bouffalo_flash_cube/BLFlashCommand-ubuntu
+	#PUNCOVER_PROGRAM = puncover_riscv
 	cmake_generator = "Unix Makefiles"
 	endif
 endif

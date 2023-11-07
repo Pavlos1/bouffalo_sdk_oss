@@ -1,3 +1,25 @@
+# Fork Information
+
+This is a fork of the [Bouffalo SDK](https://github.com/bouffalolab/bouffalo_sdk). It aims to remove the requirement to run closed-source binaries during the build process.
+
+The idea is:
+* The SDK should not hard-code dependencies (`python`, `cmake` etc.). Instead these dependencies should be documented so that the user can install them however they wish.
+* If a dependency is installed in a "standard" location (e.g. by the package manager), the SDK should find and use it automatically.
+* If a dependency is installed somewhere else, the user should be provided a mechanism to specify its location (probably via `kconfig`).
+
+This repository exists mainly for my own purposes, so it is currently incomplete. Feel free to open issues/PRs if you wish to make this fork work with your system and/or use-case.
+
+# Fork Dependencies
+
+TODO. For now:
+
+```bash
+pip install -r tools/bflb_tools_imported/requires.txt
+```
+
+The Xuantie RISCV toolchain can be [compiled from source](https://github.com/T-head-Semi/xuantie-gnu-toolchain). Flashing can be done with the open source `bflb-iot-tool`,
+see [here](https://wiki.pine64.org/wiki/Ox64#Alternative:_Open-Source_Flashing).
+
 [![License](https://img.shields.io/badge/License-Apache--2.0-brightgreen)](LICENSE)
 
 [中文版](README_zh.md)
